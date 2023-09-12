@@ -4,7 +4,7 @@ Delete any files found in "Recently Deleted"
 import logging
 import os
 from tzlocal import get_localzone
-from icloudpd.paths import local_download_path
+from icloudpd.paths import local_download_path, live_photo_download_path
 import pyicloud_ipd
 
 
@@ -56,3 +56,11 @@ def autodelete_photos(
                 logger.debug("Deleting %s...", path)
                 delete_local = delete_file_dry_run if dry_run else delete_file
                 delete_local(logger, path)
+
+            live_photo_path = os.path.normpath(
+                live_photo_download_path(
+                    media, size, download_dir))
+            if os.path.exists(live_photo_path):
+                logger.debug("Deleting live photo %s...", live_photo_path)
+                delete_local = delete_file_dry_run if dry_run else delete_file
+                delete_local(logger, live_photo_path)

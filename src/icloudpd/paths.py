@@ -28,3 +28,10 @@ def filename_with_size(media, size):
     if size == 'original':
         return filename
     return (f"-{size}.").join(filename.rsplit(".", 1))
+
+
+def live_photo_download_path(media, size, download_dir):
+    filename = filename_with_size(media, size)
+    live_photo_filename = os.path.splitext(filename)[0] + "_HEVC.MOV"
+    download_path = os.path.join(download_dir, live_photo_filename)
+    return download_path
