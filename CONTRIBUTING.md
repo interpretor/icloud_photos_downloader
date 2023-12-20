@@ -74,11 +74,7 @@ There are some requirements for pull requests:
 * We aim to push out a Release once a week (Fridays),  if there is at least one new change in CHANGELOG.
 
 If you need to make any changes to the `pyicloud` library,
-`icloudpd` uses a fork of this library that has been renamed to `pyicloud-ipd`.
-Please clone my [pyicloud fork](https://github.com/icloud-photos-downloader/pyicloud)
-and check out the [pyicloud-ipd](https://github.com/icloud-photos-downloader/pyicloud/tree/pyicloud-ipd)
-branch. PRs should be based on the `pyicloud-ipd` branch and submitted to
-[icloud-photos-downloader/pyicloud](https://github.com/icloud-photos-downloader/pyicloud).
+`icloudpd` uses a fork of this library that has been added as a subfolder `pyicloud_ipd`.
 
 ## Setting up the development environment
 
@@ -125,21 +121,21 @@ scripts/build
 Building platform executables:
 
 ``` sh
-scripts/build_bin_linux 1.16.2 amd64
+scripts/build_bin_linux 1.17.0 amd64
 ```
 Note: that command is for Linux, including devcontainers. Windows & MacOS scripts must be executed on respective platforms.
 
 Building Python wheels (with single executables; platform-specific):
 
 ``` sh
-scripts/build_binary_dist_linux 1.16.2
+scripts/build_binary_dist_linux 1.17.0
 ```
 Note: that the step expects executables to be already prepared by previous step
 
 Building NPM packages (with single executables; platform-specific):
 
 ``` sh
-scripts/build_npm 1.16.2
+scripts/build_npm 1.17.0
 ```
 Note: that the step expects executables to be already prepared by previous steps
 

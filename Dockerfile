@@ -1,8 +1,6 @@
-FROM python:3.11-alpine3.17 as build
+FROM python:3.12-alpine3.18 as build
 
 WORKDIR /app
-
-ENV TZ="America/Los_Angeles"
 
 ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
 
@@ -15,17 +13,19 @@ COPY src src
 
 RUN pip3 install -e .[dev]
 
-RUN pyinstaller -y --collect-all keyrings.alt --hidden-import pkgutil --collect-all tzdata src/starters/exec.py
+RUN pyinstaller -y --collect-all keyrings.alt --hidden-import pkgutil --collect-all tzdata --onefile src/starters/icloudpd_ex.py
 
-FROM alpine:3.17 as runtime
+FROM alpine:3.18 as runtime
+
+RUN apk add --no-cache tzdata
+
+ENV TZ=UTC
 
 WORKDIR /app
 
-ENV TZ="America/Los_Angeles"
+COPY --from=build /app/dist/icloudpd_ex .
 
-COPY --from=build /app/dist/exec .
-
-ENTRYPOINT ["/app/exec"]
+ENTRYPOINT ["/app/icloudpd_ex"]
 
 # RUN set -xe \
 #   && ln -s /app/icloudpd /usr/local/bin/icloudpd \

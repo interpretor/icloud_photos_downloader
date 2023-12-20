@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## 1.17.0 (2023-12-19)
+
+- fix: macos binary failing [#668](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/668) [#700](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/700)
+- fix: 'Invalid email/password combination' exception due to recent iCloud changes [#729](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/729)
+- feature: `--auth-only` parameter to independently create/validate session tokens without listing/downloading photos
+- feature: 2FA validation merged from `pyicloud`
+
+## 1.16.3 (2023-12-04)
+
+- fix: file date attribute [#714](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/714)
+- fix: `icloud --username` parameter reported as not an option [#719](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/719)
+
 ## 1.16.2 (2023-09-30)
 
 - fix: send logs to stdout [#697](https://github.com/icloud-photos-downloader/icloud_photos_downloader/issues/697)
